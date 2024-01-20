@@ -15,7 +15,7 @@ function formSubmitHandler(event) {
   const numberInputs = extractNumbers(formData);
 
   let result = '';
-  
+
   try {
     const numbers = [];
     for (const numberInput of numberInputs) {
