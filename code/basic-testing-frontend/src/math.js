@@ -8,3 +8,12 @@ export function add(numbers) {
   }
   return sum;
 }
+
+export function calculateResult(numberValues) {
+  try {
+    const numbers = [];
+    result = add(numbers).toString();
+  } catch (error) {
+    result = error.message;
+  }
+}
