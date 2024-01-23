@@ -1,4 +1,4 @@
-import { validateNumber, validateStringNotEmpty } from './validation';
+import { validateNumber, validateStringNotEmpty } from './validation.js';
 
 export function transformToNumber(value) {
   return +value;
