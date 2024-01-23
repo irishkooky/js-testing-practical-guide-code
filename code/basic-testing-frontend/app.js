@@ -1,4 +1,4 @@
-import { extractEnteredNumberValues, extractNumbers } from './src/parser.js';
+import { extractEnteredNumberValues } from './src/parser.js';
 import {
   validateStringNotEmpty,
   validateNumber,
