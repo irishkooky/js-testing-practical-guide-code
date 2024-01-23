@@ -1,21 +1,52 @@
-import { expect, it } from 'vitest';
-import { transformToNumber } from './numbers';
+import { describe, expect, it } from 'vitest';
+import { cleanNumbers, transformToNumber } from './numbers';
 
-it('should transform a string number to a number of type number', () => {
-  const input = '1';
+describe('transformToNumber()', () => {
+  it('should transform a string number to a number of type number', () => {
+    const input = '1';
 
-  const result = transformToNumber(input);
+    const result = transformToNumber(input);
 
-  expect(result).toBe(+input);
+    expect(result).toBe(+input);
+  });
+
+  it('should yield NaN for non-transformable values', () => {
+    const input = 'input';
+    const input2 = {};
+
+    const result = transformToNumber(input);
+    const result2 = transformToNumber(input2);
+
+    expect(result).toBeNaN();
+    expect(result2).toBeNaN();
+  });
 });
 
-it('should yield NaN for non-transformable values', () => {
-  const input = 'input';
-  const input2 = {};
+describe('cleanNumbers()', () => {
+  it('should return an array of number values if an array of string number values is provided', () => {
+    const numberValues = ['1', '2'];
 
-  const result = transformToNumber(input);
-  const result2 = transformToNumber(input2);
+    const cleanedNumbers = cleanNumbers(numberValues);
 
-  expect(result).toBeNaN();
-  expect(result2).toBeNaN();
+    expect(cleanedNumbers[0]).toBeTypeOf('number');
+  });
+
+  it('should throw an error if an array with at least one empty string is provided', () => {
+    const numberValues = ['', 1];
+
+    const cleanFn = () => cleanNumbers(numberValues);
+
+    expect(cleanFn).toThrow();
+  });
+
+  it('should throw an error if an array with at least one NaN is provided', () => {
+    const numberValues = ['1', 2];
+    const numberValues2 = [NaN, 2];
+
+    const cleanFn = () => cleanNumbers(numberValues);
+    const cleanFn2 = () => cleanNumbers(numberValues2);
+
+    expect(cleanFn).toThrow();
+    expect(cleanFn2).toThrow();
+  });
 });
