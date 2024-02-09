@@ -5,5 +5,5 @@ export const promises = {
     return new Promise((resolve, reject) => {
       resolve();
     });
-  })
-}
+  }),
+};

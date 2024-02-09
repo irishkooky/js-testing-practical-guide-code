@@ -2,6 +2,7 @@ import writeData from './util/io.js';
 
 export function generateReportData(logFn) {
   const data = 'Some dummy data for this demo app';
+  // logのfunctionがあったらそれを出す
   if (logFn) {
     logFn(data);
   }
