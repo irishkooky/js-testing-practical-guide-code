@@ -13,6 +13,7 @@ const window = new Window();
 const document = window.document;
 vi.stubGlobal('document', document);
 
+// 毎回domはリセットしなければならない
 beforeEach(() => {
   document.body.innerHTML = '';
   document.write(htmlDocumentContent);
